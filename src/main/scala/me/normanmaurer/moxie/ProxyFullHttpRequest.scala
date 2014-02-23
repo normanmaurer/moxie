@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package me.normanmaurer.maven.proxy
+package me.normanmaurer.moxie
 
 import io.netty.handler.codec.http._
 import io.netty.buffer.ByteBuf

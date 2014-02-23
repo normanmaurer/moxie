@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package me.normanmaurer.maven.proxy
+package me.normanmaurer.moxie
 
 import io.netty.channel.ChannelOption
 import io.netty.channel.nio.NioEventLoopGroup
@@ -24,15 +24,15 @@ import java.net.{URI, InetSocketAddress}
 import java.io.{FileInputStream, File}
 import java.util.logging.{Level, Logger}
 
-class AsyncMavenProxy {}
-object AsyncMavenProxy {
-  val logger = Logger.getLogger(classOf[AsyncMavenProxy].getName)
+class Moxie {}
+object Moxie {
+  val logger = Logger.getLogger(classOf[Moxie].getName)
 
   def main(args: Array[String]): Unit = {
     val stream = {
-      Option(System.getProperty("asyncmavenproxy.config")) match {
+      Option(System.getProperty("moxie.config")) match {
         case Some(file: String) => new FileInputStream(file)
-        case None => getClass.getClassLoader.getResourceAsStream("asyncmavenproxy.properties")
+        case None => getClass.getClassLoader.getResourceAsStream("moxie.properties")
       }
     }
     val properties = {
@@ -64,7 +64,7 @@ object AsyncMavenProxy {
           bootstrap.childHandler(new ProxyInitializer(localRepository, repositories, ProxyHandler.isHttps(listenUri)))
           val ch = bootstrap.bind(addr).syncUninterruptibly().channel
           if (logger.isLoggable(Level.INFO)) {
-            logger.info(classOf[AsyncMavenProxy].getName + " listing on " + ch.localAddress)
+            logger.info(classOf[Moxie].getName + " listing on " + ch.localAddress)
           }
           ch.closeFuture.syncUninterruptibly
         } finally {

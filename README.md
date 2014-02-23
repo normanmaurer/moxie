@@ -1,6 +1,6 @@
-async-maven-proxy
+Moxie
 =================
-Async Maven Proxy is a caching maven proxy which is written on top of Netty and is pretty light-weight.
+Moxie is a caching maven proxy which is written on top of Netty and is pretty light-weight.
 I mainly wrote this because sonatype nexus and apache archiva did not work on my NAS to well and I was
 in need for some more light-weight solution.
 
@@ -12,24 +12,24 @@ First compile it
 
 \# mvn clean compile assembly:single
 
-Then copy the asyncmavenproxy.properties to your prefered directory and adjust if needed. After
+Then copy the moxie.properties to your prefered directory and adjust if needed. After
 this start the proxy via:
 
-\# java -Dasyncmavenproxy.config=/path/to/config/asyncmavenproxy.properties -jar async-maven-proxy-1.0-SNAPSHOT-jar-with-dependencies.jar
+\# java -Dmoxie.config=/path/to/config/moxie.properties -jar moxie-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 Now configure maven to make use of it by add this settings to your ~/.m2/settings.xml
 
 ```
   <mirrors>
     <mirror>
-      <id>async-maven-proxy</id>
+      <id>moxie</id>
       <mirrorOf>*</mirrorOf>
       <url>http://addressOfProxy:portOfProxy</url>
     </mirror>
   </mirrors>
   <profiles>
     <profile>
-      <id>async-maven-proxy</id>
+      <id>moxie</id>
       <repositories>
         <repository>
           <id>central</id>
@@ -49,7 +49,7 @@ Now configure maven to make use of it by add this settings to your ~/.m2/setting
     </profile>
   </profiles>
   <activeProfiles>
-    <activeProfile>async-maven-proxy</activeProfile>
+    <activeProfile>moxie</activeProfile>
   </activeProfiles>
 ```
 
