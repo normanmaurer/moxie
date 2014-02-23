@@ -8,6 +8,7 @@ The code itself is written in Scala and uses Netty for the network code itself. 
 useful.
 
 __How to use it__
+
 First compile it
 
 \# mvn clean compile assembly:single
