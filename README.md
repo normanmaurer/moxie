@@ -9,10 +9,12 @@ useful.
 
 # How to run
 First compile it
+
 \# mvn clean compile assembly:single
 
 Then copy the asyncmavenproxy.properties to your prefered directory and adjust if needed. After
 this start the proxy via:
-\#  java -Dasyncmavenproxy.config=/path/to/config/asyncmavenproxy.properties -jar async-maven-proxy-1.0-SNAPSHOT-jar-with-dependencies.jar
+
+\# java -Dasyncmavenproxy.config=/path/to/config/asyncmavenproxy.properties -jar async-maven-proxy-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 Enjoy!
